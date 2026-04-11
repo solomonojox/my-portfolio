@@ -18,7 +18,7 @@ export default async function ExperienceDetailPage({ params }: { params: Promise
         <ArrowLeft size={13} /> Back to experience
       </Link>
 
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', marginBottom: '2rem' }} className='flex-col md:flex-row'>
         <div className="icon-badge" style={{ width: '4rem', height: '4rem', fontSize: '1.5rem' }}>
           {exp.company[0]}
         </div>
