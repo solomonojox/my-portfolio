@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { experiences } from '@/lib/data';
 import { ArrowLeft, MapPin, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 
 export function generateStaticParams() {
   return experiences.map(e => ({ slug: e.slug }));
@@ -19,9 +20,19 @@ export default async function ExperienceDetailPage({ params }: { params: Promise
       </Link>
 
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', marginBottom: '2rem' }} className='flex-col md:flex-row'>
-        <div className="icon-badge" style={{ width: '4rem', height: '4rem', fontSize: '1.5rem' }}>
-          {exp.company[0]}
-        </div>
+        {exp.logo ? (
+          <Image
+            src={exp.logo}
+            alt=''
+            width={80}
+            height={80}
+          />
+        ) : (
+          <div className="icon-badge" style={{ width: '4rem', height: '4rem', fontSize: '1.5rem' }}>
+            {exp.company[0]}
+          </div>
+        )}
+        
         <div>
           <h1 className="display-heading" style={{ fontSize: '2.5rem', color: 'var(--text)', marginBottom: '0.25rem' }}>{exp.role}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>

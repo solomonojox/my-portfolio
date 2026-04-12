@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { experiences } from '@/lib/data';
 import { ArrowUpRight, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ExperiencePage() {
   return (
@@ -17,10 +18,18 @@ export default function ExperiencePage() {
         {experiences.map((exp) => (
           <article key={exp.slug} className="exp-card card-hover">
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              {/* Logo */}
-              <div className="icon-badge" style={{ width: '3rem', height: '3rem', fontSize: '1.125rem' }}>
-                {exp.company[0]}
-              </div>
+              {exp.logo ? (
+                <Image
+                  src={exp.logo}
+                  alt=''
+                  width={80}
+                  height={80}
+                />
+              ) : (
+                <div className="icon-badge" style={{ width: '3rem', height: '3rem', fontSize: '1.125rem' }}>
+                  {exp.company[0]}
+                </div>
+              )}
 
               {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>
