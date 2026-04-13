@@ -9,11 +9,10 @@ export default function HomePage() {
       <section style={{ marginBottom: '5rem' }}>
         <div style={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          alignItems: 'start',
           gap: '2rem',
           flexWrap: 'wrap',
-        }}>
+        }} className='justify-center md:justify-between'>
           {/* Text */}
           <div style={{ flex: '1 1 20rem', minWidth: 0 }}>
             <p className="section-label" style={{ marginBottom: '1rem' }}>Available for work</p>
