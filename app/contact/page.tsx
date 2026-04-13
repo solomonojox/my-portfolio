@@ -32,7 +32,7 @@ export default function ContactPage() {
     <div className="page-wrap">
       <div className="page-header">
         <p className="section-label" style={{ marginBottom: '0.5rem' }}>Get in touch</p>
-        <h1 className="display-heading" style={{ fontSize: '3rem', color: 'var(--text)' }}>Contact</h1>
+        <h1 className="display-heading" style={{ fontSize: '2rem', color: 'var(--text)' }}>Contact</h1>
         <p style={{ marginTop: '0.75rem', fontSize: '1rem', maxWidth: '32rem', color: 'var(--text-2)' }}>
           Have a project in mind or just want to say hi? My inbox is always open.
         </p>

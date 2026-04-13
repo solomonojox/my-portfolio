@@ -7,21 +7,28 @@ import { useTheme, Theme } from './ThemeProvider';
 import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2 } from 'lucide-react';
 
 const navLinks = [
-  { href: '/',               label: 'Projects'      },
-  { href: '/experience',     label: 'Experience'    },
-  { href: '/contributions',  label: 'Contributions' },
-  { href: '/skills',         label: 'Skills'        },
-  { href: '/contact',        label: 'Contact'       },
+  { href: '/', label: 'Projects' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/contributions', label: 'Contributions' },
+  { href: '/skills', label: 'Skills' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const themes: { value: Theme; label: string; Icon: React.ElementType }[] = [
-  { value: 'dark',   label: 'Dark',   Icon: Moon     },
-  { value: 'light',  label: 'Light',  Icon: Sun      },
-  { value: 'retro',  label: 'Retro',  Icon: Zap      },
-  { value: 'paper',  label: 'Paper',  Icon: FileText },
+  { value: 'dark', label: 'Dark', Icon: Moon },
+  { value: 'light', label: 'Light', Icon: Sun },
+  { value: 'retro', label: 'Retro', Icon: Zap },
+  { value: 'paper', label: 'Paper', Icon: FileText },
   { value: 'aurora', label: 'Aurora', Icon: Sparkles },
-  { value: 'system', label: 'System', Icon: Monitor  },
+  { value: 'system', label: 'System', Icon: Monitor },
 ];
+
+function isActive(href: string, pathname: string): boolean {
+  if (href === '/') {
+    return pathname === '/' || pathname === '/projects' || pathname.startsWith('/projects/');
+  }
+  return pathname.startsWith(href);
+}
 
 export default function Nav() {
   const pathname = usePathname();
@@ -52,14 +59,11 @@ export default function Nav() {
 
         {/* Desktop links */}
         <ul style={{ display: 'none', alignItems: 'center', listStyle: 'none', gap: 0 }} className="desktop-nav">
-          {navLinks.map(({ href, label }) => {
-            const active = pathname === href || (href !== '/' && pathname.startsWith(href));
-            return (
-              <li key={href}>
-                <Link href={href} className={`nav-link${active ? ' active' : ''}`}>{label}</Link>
-              </li>
-            );
-          })}
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
+              <Link href={href} className={`nav-link${isActive(href, pathname) ? ' active' : ''}`}>{label}</Link>
+            </li>
+          ))}
         </ul>
 
         {/* Right controls */}
@@ -124,24 +128,21 @@ export default function Nav() {
       {/* Mobile menu */}
       {menuOpen && (
         <div style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--border)' }} className="mobile-menu">
-          {navLinks.map(({ href, label }) => {
-            const active = pathname === href || (href !== '/' && pathname.startsWith(href));
-            return (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  display: 'block', padding: '0.875rem 1.25rem',
-                  borderBottom: '1px solid var(--border)',
-                  fontFamily: 'var(--font-mono)', fontSize: '0.75rem',
-                  color: active ? 'var(--accent)' : 'var(--text-2)',
-                }}
-              >
-                {label}
-              </Link>
-            );
-          })}
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                display: 'block', padding: '0.875rem 1.25rem',
+                borderBottom: '1px solid var(--border)',
+                fontFamily: 'var(--font-mono)', fontSize: '0.75rem',
+                color: isActive(href, pathname) ? 'var(--accent)' : 'var(--text-2)',
+              }}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       )}
 

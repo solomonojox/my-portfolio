@@ -1,28 +1,78 @@
 import Link from 'next/link';
 import { projects } from '@/lib/data';
 import { ArrowUpRight, Code2, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
     <div className="page-wrap">
-      {/* Hero */}
       <section style={{ marginBottom: '5rem' }}>
-        <p className="section-label" style={{ marginBottom: '1rem' }}>Available for work</p>
-        <h1 className="display-heading" style={{ fontSize: 'clamp(2.8rem, 7vw, 5rem)', color: 'var(--text)', marginBottom: '1.25rem' }}>
-          I build things<br />
-          <span style={{ color: 'var(--accent)' }}>for the web.</span>
-        </h1>
-        <p style={{ fontSize: '1.125rem', maxWidth: '36rem', color: 'var(--text-2)' }}>
-          Fullstack developer with a bias for shipping. I care deeply about
-          developer experience, performance, and interfaces that feel alive.
-        </p>
-        <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-          <Link href="/projects" className="btn-primary">
-            View projects <ArrowUpRight size={14} />
-          </Link>
-          <Link href="/contact" className="btn-secondary">
-            Get in touch
-          </Link>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '2rem',
+          flexWrap: 'wrap',
+        }}>
+          {/* Text */}
+          <div style={{ flex: '1 1 20rem', minWidth: 0 }}>
+            <p className="section-label" style={{ marginBottom: '1rem' }}>Available for work</p>
+            <h1 className="display-heading" style={{ fontSize: 'clamp(1.8rem, 5vw, 4rem)', color: 'var(--text)', marginBottom: '1.25rem' }}>
+              I build things<br />
+              <span style={{ color: 'var(--accent)' }}>for the web.</span>
+            </h1>
+            <p style={{ fontSize: '1.125rem', maxWidth: '36rem', color: 'var(--text-2)' }}>
+              Fullstack developer with a bias for shipping. I care deeply about
+              developer experience, performance, and interfaces that feel alive.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+              <Link href="/projects" className="btn-primary">
+                View projects <ArrowUpRight size={14} />
+              </Link>
+              <Link href="/contact" className="btn-secondary">
+                Get in touch
+              </Link>
+            </div>
+          </div>
+
+          {/* Avatar */}
+          <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'min(18rem, 100%)' }}>
+            <div style={{ position: 'relative', width: '100%', paddingBottom: '100%' }}>
+              {/* Accent ring */}
+              <div style={{
+                position: 'absolute', inset: '-3px',
+                borderRadius: '50%',
+                background: 'conic-gradient(var(--accent) 0deg, transparent 200deg)',
+                zIndex: 0,
+              }} />
+              {/* Image */}
+              <div style={{
+                position: 'absolute', inset: '3px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                background: 'var(--bg-2)',
+                zIndex: 1,
+              }}>
+                <Image
+                  src="/avatar.png"
+                  alt="Solomon Akpa"
+                  sizes='24'
+                  loading="eager"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              {/* Available dot */}
+              <div style={{
+                position: 'absolute', bottom: '0.6rem', right: '0.6rem',
+                width: '0.875rem', height: '0.875rem',
+                borderRadius: '50%',
+                background: '#22c55e',
+                border: '2px solid var(--bg)',
+                zIndex: 2,
+              }} />
+            </div>
+          </div>
         </div>
       </section>
 
