@@ -12,7 +12,7 @@ export default function ExperienceDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
 
-  const [exp, setExp] = useState(() => experiences.find(e => e.slug === slug));
+  const [exp] = useState(() => experiences.find(e => e.slug === slug));
 
   useEffect(() => {
     if (!exp) {
@@ -49,7 +49,7 @@ export default function ExperienceDetailPage() {
         )}
 
         <div>
-          <h1 className="display-heading" style={{ fontSize: '2.5rem', color: 'var(--text)', marginBottom: '0.25rem' }}>{exp.role}</h1>
+          <h1 className="display-heading text-[1.5rem] md:text-[2.5rem]" style={{ color: 'var(--text)', marginBottom: '0.25rem' }}>{exp.role}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             <span style={{ fontWeight: 600, color: 'var(--accent)' }}>{exp.company}</span>
             <span className="mono" style={{ fontSize: '0.72rem', color: 'var(--text-3)' }}>{exp.period}</span>

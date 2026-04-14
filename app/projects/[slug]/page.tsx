@@ -43,7 +43,7 @@ export default function ProjectDetailPage() {
             </span>
           )}
         </div>
-        <h1 className="display-heading" style={{ fontSize: '2rem', color: 'var(--text)', marginBottom: '1rem' }}>{project.title}</h1>
+        <h1 className="display-heading text-[1.5rem] md:text-[2.5rem]" style={{color: 'var(--text)', marginBottom: '1rem' }}>{project.title}</h1>
         <p style={{ fontSize: '1.125rem', color: 'var(--text-2)' }}>{project.description}</p>
       </div>
 
