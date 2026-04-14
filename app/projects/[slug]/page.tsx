@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { projects } from '@/lib/data';
 import { ArrowLeft, Code2, ExternalLink, Calendar, Tag } from 'lucide-react';
+import Image from 'next/image';
 
 export function generateStaticParams() {
   return projects.map(p => ({ slug: p.slug }));
@@ -11,6 +12,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   const project = projects.find(p => p.slug === slug);
   if (!project) notFound();
+
+  console.log(project.type)
 
   return (
     <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '4rem 1.25rem' }}>
@@ -46,9 +49,94 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
       <div className="divider" />
 
-      <p style={{ fontSize: '1rem', lineHeight: '1.9', color: 'var(--text-2)', marginBottom: '2.5rem' }}>
-        {project.longDescription ?? project.description}
-      </p>
+      {(project.images?.length ?? 0) > 0 && (
+        <div style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--text)' }}>
+            Screenshots
+          </h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1rem',
+            }}
+          >
+            {project.images?.map((img, index) => (
+              <div
+                key={index}
+                style={{
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: 'var(--card-bg)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* <img
+                  src={img}
+                  alt={`${project.title} screenshot ${index + 1}`}
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    transition: 'transform 0.3s ease',
+                  }}
+                /> */}
+
+                {project.type === 'web' ? (
+                  <Image
+                    src={img}
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    style={{
+                      width: '100%',
+                      height: '200px',
+                      objectFit: 'cover',
+                      transition: 'transform 0.3s ease',
+                    }}
+                    loading="eager"
+                    height={300}
+                    width={200}
+                  />
+                ) : (
+                  <Image
+                    src={img}
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      transition: 'transform 0.3s ease',
+                    }}
+                    loading="eager"
+                    height={700}
+                    width={200}
+                  />
+
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div
+        style={{
+          fontSize: '1rem',
+          lineHeight: '1.9',
+          color: 'var(--text-2)',
+          marginBottom: '2.5rem',
+        }}
+      >
+        {(project.longDescription ?? project.description)
+          .split('\n\n')
+          .map((paragraph, index) => (
+            <p key={index} style={{ marginBottom: '1rem' }}>
+              {paragraph}
+            </p>
+          ))}
+      </div>
 
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: '0.75rem' }}>

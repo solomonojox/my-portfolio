@@ -9,6 +9,8 @@ export interface Project {
   repoUrl?: string;
   featured?: boolean;
   year?: string;
+  images?: string[],
+  type: string
 }
 
 export interface Experience {

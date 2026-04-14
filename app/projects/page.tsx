@@ -21,10 +21,10 @@ export default function ProjectsPage() {
                 {p.featured && <span className="tag">featured</span>}
                 {p.year && <span className="mono" style={{ fontSize: '0.72rem', color: 'var(--text-3)' }}>{p.year}</span>}
               </div>
-              {/* <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0 }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0 }}>
                 {p.repoUrl && <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" className="footer-link"><Code2 size={15} /></a>}
                 {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="footer-link"><ExternalLink size={15} /></a>}
-              </div> */}
+              </div>
             </div>
             <h2 className="display-heading" style={{ fontSize: '1.25rem', color: 'var(--text)', marginBottom: '0.5rem' }}>{p.title}</h2>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-2)', lineHeight: '1.7', marginBottom: '1rem', flex: 1 }}>{p.description}</p>
