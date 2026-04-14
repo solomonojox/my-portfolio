@@ -1,25 +1,38 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
+'use client';
+
+import { notFound, useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { projects } from '@/lib/data';
 import { ArrowLeft, Code2, ExternalLink, Calendar, Tag } from 'lucide-react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-export function generateStaticParams() {
-  return projects.map(p => ({ slug: p.slug }));
-}
+export default function ProjectDetailPage() {
+  const router = useRouter();
+  const params = useParams();
+  const slug = params.slug as string;
+  
+  const [project, setProject] = useState(() => projects.find(p => p.slug === slug));
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = projects.find(p => p.slug === slug);
-  if (!project) notFound();
+  useEffect(() => {
+    if (!project) {
+      notFound();
+    }
+  }, [project]);
 
-  console.log(project.type)
+  if (!project) {
+    return null; // or a loading spinner
+  }
+
+  const handleBack = () => {
+    router.back();
+  };
 
   return (
     <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '4rem 1.25rem' }}>
-      <Link href="/projects" className="back-link">
+      <button onClick={handleBack} className="back-link" style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>
         <ArrowLeft size={13} /> Back to projects
-      </Link>
+      </button>
 
       <div style={{ marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
@@ -30,7 +43,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </span>
           )}
         </div>
-        <h1 className="display-heading" style={{ fontSize: '3rem', color: 'var(--text)', marginBottom: '1rem' }}>{project.title}</h1>
+        <h1 className="display-heading" style={{ fontSize: '2rem', color: 'var(--text)', marginBottom: '1rem' }}>{project.title}</h1>
         <p style={{ fontSize: '1.125rem', color: 'var(--text-2)' }}>{project.description}</p>
       </div>
 
@@ -74,17 +87,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   cursor: 'pointer',
                 }}
               >
-                {/* <img
-                  src={img}
-                  alt={`${project.title} screenshot ${index + 1}`}
-                  style={{
-                    width: '100%',
-                    height: '200px',
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s ease',
-                  }}
-                /> */}
-
                 {project.type === 'web' ? (
                   <Image
                     src={img}
@@ -113,7 +115,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     height={700}
                     width={200}
                   />
-
                 )}
               </div>
             ))}

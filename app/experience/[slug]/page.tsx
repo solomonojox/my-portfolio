@@ -1,23 +1,38 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
+'use client';
+
+import { notFound, useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { experiences } from '@/lib/data';
 import { ArrowLeft, MapPin, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-export function generateStaticParams() {
-  return experiences.map(e => ({ slug: e.slug }));
-}
+export default function ExperienceDetailPage() {
+  const router = useRouter();
+  const params = useParams();
+  const slug = params.slug as string;
 
-export default async function ExperienceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const exp = experiences.find(e => e.slug === slug);
-  if (!exp) notFound();
+  const [exp, setExp] = useState(() => experiences.find(e => e.slug === slug));
+
+  useEffect(() => {
+    if (!exp) {
+      notFound();
+    }
+  }, [exp]);
+
+  if (!exp) {
+    return null; // or a loading spinner
+  }
+
+  const handleBack = () => {
+    router.back();
+  };
 
   return (
     <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '4rem 1.25rem' }}>
-      <Link href="/experience" className="back-link">
+      <button onClick={handleBack} className="back-link" style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>
         <ArrowLeft size={13} /> Back to experience
-      </Link>
+      </button>
 
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', marginBottom: '2rem' }} className='flex-col md:flex-row'>
         {exp.logo ? (
@@ -32,7 +47,7 @@ export default async function ExperienceDetailPage({ params }: { params: Promise
             {exp.company[0]}
           </div>
         )}
-        
+
         <div>
           <h1 className="display-heading" style={{ fontSize: '2.5rem', color: 'var(--text)', marginBottom: '0.25rem' }}>{exp.role}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>

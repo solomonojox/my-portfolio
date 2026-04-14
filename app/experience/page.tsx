@@ -14,10 +14,10 @@ export default function ExperiencePage() {
         </p>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }} className=''>
         {experiences.map((exp) => (
           <article key={exp.slug} className="exp-card card-hover">
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }} className='flex-col md:flex-row'>
               {exp.logo ? (
                 <Image
                   src={exp.logo}
