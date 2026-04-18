@@ -9,7 +9,7 @@ import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2 } from 'luc
 const navLinks = [
   { href: '/', label: 'Projects' },
   { href: '/experience', label: 'Experience' },
-  { href: '/contributions', label: 'Contributions' },
+  // { href: '/contributions', label: 'Contributions' },
   { href: '/skills', label: 'Skills' },
   { href: '/contact', label: 'Contact' },
 ];
