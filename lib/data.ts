@@ -241,22 +241,27 @@ export const skills: Skill[] = [
   { name: 'Next.js', shortDescription: 'App Router, SSR, ISR, edge functions, API routes.', proficiency: 5, category: 'Frontend', logo: '/Next.js.svg' },
   { name: 'React', shortDescription: 'Hooks, context, suspense, server components.', proficiency: 5, category: 'Frontend', logo: '/React.svg' },
   { name: 'TypeScript', shortDescription: 'Strict mode, generics, utility types, zod validation.', proficiency: 5, category: 'Language', logo: '/TypeScript.svg' },
-  { name: 'Node.js', shortDescription: 'REST APIs, WebSockets, streaming, background jobs.', proficiency: 4, category: 'Backend', logo: '/Node.js.svg' },
   { name: 'Tailwind CSS', shortDescription: 'Custom design systems, responsive layouts, v4 config.', proficiency: 5, category: 'Frontend', logo: '/Tailwind CSS.svg' },
   { name: 'Bootstrap', shortDescription: 'Preprocessors, frameworks, responsive design.', proficiency: 4, category: 'Frontend', logo: '/Bootstrap.svg' },
   { name: 'JavaScript', shortDescription: 'ES6+, async patterns, DOM manipulation, event handling.', proficiency: 5, category: 'Language', logo: '/JavaScript.svg' },
   { name: 'Golang', shortDescription: 'REST APIs with Gin, database interactions with GORM.', proficiency: 3, category: 'Language', logo: '/Go.svg' },
   { name: 'CSS', shortDescription: 'Preprocessors, frameworks, responsive design.', proficiency: 4, category: 'Frontend', logo: '/CSS3.svg' },
-  { name: 'PostgreSQL', shortDescription: 'Schema design, query optimisation, migrations with Drizzle.', proficiency: 4, category: 'Database', logo: '/PostgresSQL.svg' },
-  { name: 'MongoDB', shortDescription: 'Document modeling, aggregation pipelines, indexing.', proficiency: 3, category: 'Database', logo: '/MongoDB.svg' },
+  
+  { name: 'Node.js', shortDescription: 'REST APIs, WebSockets, streaming, background jobs.', proficiency: 4, category: 'Backend', logo: '/Node.js.svg' },
   { name: 'GraphQL', shortDescription: 'Apollo Server, code-gen, persisted queries, DataLoader.', proficiency: 3, category: 'Backend', logo: '/GraphQL.svg' },
-  { name: 'Docker', shortDescription: 'Multi-stage builds, Compose, container orchestration basics.', proficiency: 3, category: 'DevOps', logo: '/Docker.svg' },
+
+  { name: 'PostgreSQL', shortDescription: 'Schema design, query optimisation, migrations with Drizzle.', proficiency: 3, category: 'Database', logo: '/PostgresSQL.svg' },
+  { name: 'MongoDB', shortDescription: 'Document modeling, aggregation pipelines, indexing.', proficiency: 5, category: 'Database', logo: '/MongoDB.svg' },
+
   { name: 'Figma', shortDescription: 'Component libraries, auto-layout, dev handoff, prototyping.', proficiency: 4, category: 'Design', logo: '/Figma.svg' },
-  { name: 'Photoshop', shortDescription: 'Image editing, compositing, optimising assets for web.', proficiency: 3, category: 'Design', logo: '/Adobe Photoshop.svg' },
-  { name: 'AWS', shortDescription: 'EC2, S3, Lambda, CloudFront, RDS — production deployments.', proficiency: 3, category: 'DevOps', logo: '/AWS.svg' },
-  { name: 'Vercel', shortDescription: 'Serverless deployments, edge functions, performance optimisation.', proficiency: 4, category: 'DevOps', logo: '/Vercel.svg' },
-  { name: 'Azure', shortDescription: 'App Services, Blob Storage, Functions, DevOps pipelines.', proficiency: 2, category: 'DevOps', logo: '/Azure.svg' },
+  { name: 'Photoshop', shortDescription: 'Image editing, compositing, optimising assets for web.', proficiency: 4, category: 'Design', logo: '/Adobe Photoshop.svg' },
+  
+  { name: 'Docker', shortDescription: 'Multi-stage builds, Compose, container orchestration basics.', proficiency: 1, category: 'DevOps', logo: '/Docker.svg' },
+  { name: 'AWS', shortDescription: 'EC2, S3, Lambda, CloudFront, RDS — production deployments.', proficiency: 2, category: 'DevOps', logo: '/AWS.svg' },
+  { name: 'Vercel', shortDescription: 'Serverless deployments, edge functions, performance optimisation.', proficiency: 5, category: 'DevOps', logo: '/Vercel.svg' },
+  { name: 'Azure', shortDescription: 'App Services, Blob Storage, Functions, DevOps pipelines.', proficiency: 3, category: 'DevOps', logo: '/Azure.svg' },
+
   { name: 'Git', shortDescription: 'Branching strategies, rebasing, pull request workflows.', proficiency: 5, category: 'Other', logo: '/Git.svg' },
-  { name: 'Swagger', shortDescription: 'API documentation, OpenAPI spec, auto-generated docs.', proficiency: 3, category: 'Other', logo: '/Swagger.svg' },
+  { name: 'Swagger', shortDescription: 'API documentation, OpenAPI spec, auto-generated docs.', proficiency: 5, category: 'Other', logo: '/Swagger.svg' },
   { name: 'Postman', shortDescription: 'API testing, environment management, automated test scripts.', proficiency: 4, category: 'Other', logo: '/Postman.svg' },
 ];
