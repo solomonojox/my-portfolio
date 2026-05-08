@@ -2,6 +2,18 @@ import { Project, Experience, Contribution, Skill } from './types';
 
 export const projects: Project[] = [
   {
+    slug: 'seman-global-group',
+    title: 'Seman Global Group',
+    description: 'A full-stack real estate platform with an integrated QR code verification system that enables secure property validation, listing management, and real-time sales analytics.',
+    longDescription: 'Seman Global Group is a full-stack real estate platform developed to power a modern property management and sales operation in Nigeria. I led the end-to-end development of the system, building both the frontend and backend architecture to support property listings, verification, and administrative workflows.\n\nA core innovation of the platform is its QR code-based property verification system. For every property listed, a unique QR code is generated and attached to its documentation. Prospective buyers can scan the QR code to instantly verify the authenticity and details of the property, reducing fraud and increasing trust in transactions — a critical challenge in the real estate sector.\n\nOn the backend, I built a robust system using Node.js and Express.js to handle listing creation, QR code generation, property data management, and transaction tracking. The system supports structured storage and retrieval of property records, ensuring consistency and reliability across operations.\n\nAn admin dashboard was developed to provide full control over the platform, including the ability to add and manage listings, monitor purchases, and track user engagement. The dashboard also includes analytics features that provide insights into property views, sales performance, and listing activity, enabling data-driven decision-making.\n\nOn the frontend, I designed a clean, responsive, and user-friendly interface that allows users to browse listings, view property details, and verify properties via QR codes seamlessly. The UI was built to reflect professionalism and trust, aligning with the expectations of high-value real estate transactions.\n\nKey highlights of the project include secure property verification via QR codes, full CRUD functionality for listings, a data-driven admin dashboard with analytics, and a scalable architecture capable of supporting real-world real estate operations.\n\nThis project demonstrates my ability to build innovative, full-stack solutions that solve real business problems, particularly in trust-sensitive industries like real estate. It highlights my strength in backend system design, user experience, and the integration of unique features that drive real-world impact.',
+    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'QR Code Integration', 'Admin Dashboard', 'Data Analytics'],
+    featured: true,
+    liveUrl: 'https://semanglobalgroup.com',
+    year: '2024',
+    images: ['/projects/seman1.png', '/projects/seman2.png', '/projects/seman3.png', '/projects/seman4.png'],
+    type: 'web'
+  },
+  {
     slug: 'solipay',
     title: 'SoliPay',
     description: 'A full-featured digital banking platform prototype that enables users to manage accounts, simulate transactions, and experience modern financial workflows through a secure and intuitive interface.',
@@ -246,7 +258,7 @@ export const skills: Skill[] = [
   { name: 'JavaScript', shortDescription: 'ES6+, async patterns, DOM manipulation, event handling.', proficiency: 5, category: 'Language', logo: '/JavaScript.svg' },
   { name: 'Golang', shortDescription: 'REST APIs with Gin, database interactions with GORM.', proficiency: 3, category: 'Language', logo: '/Go.svg' },
   { name: 'CSS', shortDescription: 'Preprocessors, frameworks, responsive design.', proficiency: 4, category: 'Frontend', logo: '/CSS3.svg' },
-  
+
   { name: 'Node.js', shortDescription: 'REST APIs, WebSockets, streaming, background jobs.', proficiency: 4, category: 'Backend', logo: '/Node.js.svg' },
   { name: 'GraphQL', shortDescription: 'Apollo Server, code-gen, persisted queries, DataLoader.', proficiency: 3, category: 'Backend', logo: '/GraphQL.svg' },
 
@@ -255,7 +267,7 @@ export const skills: Skill[] = [
 
   { name: 'Figma', shortDescription: 'Component libraries, auto-layout, dev handoff, prototyping.', proficiency: 4, category: 'Design', logo: '/Figma.svg' },
   { name: 'Photoshop', shortDescription: 'Image editing, compositing, optimising assets for web.', proficiency: 4, category: 'Design', logo: '/Adobe Photoshop.svg' },
-  
+
   { name: 'Docker', shortDescription: 'Multi-stage builds, Compose, container orchestration basics.', proficiency: 1, category: 'DevOps', logo: '/Docker.svg' },
   { name: 'AWS', shortDescription: 'EC2, S3, Lambda, CloudFront, RDS — production deployments.', proficiency: 2, category: 'DevOps', logo: '/AWS.svg' },
   { name: 'Vercel', shortDescription: 'Serverless deployments, edge functions, performance optimisation.', proficiency: 5, category: 'DevOps', logo: '/Vercel.svg' },
