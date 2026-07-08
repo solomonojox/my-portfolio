@@ -2,30 +2,22 @@
 
 import { useState } from 'react';
 import { Code2, X, Link2, Mail, Globe, Send, CheckCircle2 } from 'lucide-react';
+import { useForm, ValidationError } from "@formspree/react";
 
 const socials = [
   { href: 'https://github.com/solomonojox', Icon: Code2, label: 'GitHub', handle: 'solomonojox' },
   { href: 'https://twitter.com/solomonakpas', Icon: X, label: 'X', handle: '@solomonakpas' },
   { href: 'https://linkedin.com/in/solomonakpas', Icon: Link2, label: 'LinkedIn', handle: 'solomonakpas' },
   { href: 'mailto:solomonakpas@gmail.com', Icon: Mail, label: 'Email', handle: 'solomonakpas@gmail.com' },
-  { href: 'https://solomonakpas.com', Icon: Globe, label: 'Website', handle: 'solomonakpas.com' },
+  { href: '/', Icon: Globe, label: 'Website', handle: 'solomonakpas' },
 ];
 
 export default function ContactPage() {
+  const [state, handleSubmit] = useForm("xwvddpdl");
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 900));
-    setLoading(false);
-    setSent(true);
   }
 
   return (
@@ -60,7 +52,7 @@ export default function ContactPage() {
         {/* Form */}
         <div>
           <p className="section-label" style={{ marginBottom: '1.25rem' }}>Send a message</p>
-          {sent ? (
+          {state.succeeded ? (
             <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem', textAlign: 'center', padding: '3rem 1.5rem' }}>
               <CheckCircle2 size={40} style={{ color: 'var(--accent)' }} />
               <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.25rem', color: 'var(--text)' }}>Message sent!</h3>
@@ -84,9 +76,9 @@ export default function ContactPage() {
                   value={form.message} onChange={handleChange} className="form-input"
                   style={{ resize: 'vertical' }} />
               </div>
-              <button type="submit" disabled={loading} className="btn-primary"
-                style={{ justifyContent: 'center', opacity: loading ? 0.6 : 1 }}>
-                {loading ? (
+              <button type="submit" disabled={state.submitting} className="btn-primary"
+                style={{ justifyContent: 'center', opacity: state.submitting ? 0.6 : 1 }}>
+                {state.submitting ? (
                   <>
                     <span style={{ width: '0.875rem', height: '0.875rem', borderRadius: '50%', border: '2px solid var(--bg)', borderTopColor: 'transparent', animation: 'spin 0.6s linear infinite', display: 'inline-block' }} />
                     Sending…

@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTheme, Theme } from './ThemeProvider';
-import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2 } from 'lucide-react';
+import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2, LogOut, LogIn } from 'lucide-react';
+import { signOut, useSession, signIn } from "next-auth/react"
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Projects' },
@@ -36,6 +38,9 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [themeOpen, setThemeOpen] = useState(false);
   const current = themes.find(t => t.value === theme) ?? themes[0];
+  const { data: session } = useSession()
+  const [open, setOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   return (
     <header style={{
@@ -122,6 +127,64 @@ export default function Nav() {
           >
             {menuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
+
+          {session ? (
+            <div className="relative" ref={menuRef}>
+              {/* Avatar Button */}
+              <button
+                onClick={() => setOpen(!open)}
+                className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 transition cursor-pointer"
+              >
+                <div className="h-10 w-10 rounded-full overflow-hidden border border-gray-200">
+                  <Image
+                    src={session.user?.image || "/avatar.png"}
+                    alt={session.user?.name || "User"}
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                  />
+                </div>
+              </button>
+
+              {/* Dropdown */}
+              {open && (
+                <div className="absolute right-0 mt-3 w-64 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
+
+                  {/* User Info */}
+                  <div className="p-4 border-b" style={{ padding: '16px' }}>
+                    <p className="font-semibold text-gray-800 truncate">
+                      {session.user?.name}
+                    </p>
+                    <p className="text-sm text-gray-500 truncate">
+                      {session.user?.email}
+                    </p>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="p-2" style={{ padding: '8px' }}>
+                    <button
+                      onClick={() => {
+                        signOut()
+                        setOpen(false)
+                      }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition cursor-pointer"
+                      style={{ padding: '12px' }}
+                    >
+                      <LogOut size={16} />
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button className='rounded bg-blue-600 text-white text-sm flex gap-2 items-center cursor-pointer' style={{ padding: '2px 8px' }}
+              onClick={() => signIn("github")}
+            >
+              <LogIn size={14} />
+              login
+            </button>
+          )}
         </div>
       </nav>
 
