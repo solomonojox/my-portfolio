@@ -4,7 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import AuthSessionProviders from '@/providers/sessionprovider';
+// import AuthSessionProviders from '@/providers/sessionprovider';
 
 const spaceMono = Space_Mono({
   subsets: ['latin'],
@@ -49,15 +49,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <AuthSessionProviders>
-          <Nav />
-          <main className="pt-14 min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          {/* <ThemeProvider>
-          </ThemeProvider> */}
-        </AuthSessionProviders>
+          <ThemeProvider>
+            <Nav />
+            <main className="pt-14 min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        {/* <AuthSessionProviders>
+        </AuthSessionProviders> */}
       </body>
     </html>
   );

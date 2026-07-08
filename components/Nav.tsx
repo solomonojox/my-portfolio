@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useRef } from 'react';
 import { useTheme, Theme } from './ThemeProvider';
 import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2, LogOut, LogIn } from 'lucide-react';
-import { signOut, useSession, signIn } from "next-auth/react"
+// import { signOut, useSession, signIn } from "next-auth/react"
 import Image from 'next/image';
 
 const navLinks = [
@@ -38,7 +38,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [themeOpen, setThemeOpen] = useState(false);
   const current = themes.find(t => t.value === theme) ?? themes[0];
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -128,9 +128,8 @@ export default function Nav() {
             {menuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
 
-          {session ? (
+          {/* {session ? (
             <div className="relative" ref={menuRef}>
-              {/* Avatar Button */}
               <button
                 onClick={() => setOpen(!open)}
                 className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 transition cursor-pointer"
@@ -146,11 +145,9 @@ export default function Nav() {
                 </div>
               </button>
 
-              {/* Dropdown */}
               {open && (
                 <div className="absolute right-0 mt-3 w-64 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
 
-                  {/* User Info */}
                   <div className="p-4 border-b" style={{ padding: '16px' }}>
                     <p className="font-semibold text-gray-800 truncate">
                       {session.user?.name}
@@ -160,7 +157,6 @@ export default function Nav() {
                     </p>
                   </div>
 
-                  {/* Actions */}
                   <div className="p-2" style={{ padding: '8px' }}>
                     <button
                       onClick={() => {
@@ -184,7 +180,7 @@ export default function Nav() {
               <LogIn size={14} />
               login
             </button>
-          )}
+          )} */}
         </div>
       </nav>
 

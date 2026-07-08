@@ -64,11 +64,13 @@ export default function ContactPage() {
                 <label className="form-label" htmlFor="name">Name</label>
                 <input id="name" name="name" type="text" required placeholder="Your name"
                   value={form.name} onChange={handleChange} className="form-input" />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} />
               </div>
               <div>
                 <label className="form-label" htmlFor="email">Email</label>
                 <input id="email" name="email" type="email" required placeholder="you@example.com"
                   value={form.email} onChange={handleChange} className="form-input" />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
               <div>
                 <label className="form-label" htmlFor="message">Message</label>
