@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useTheme, Theme } from './ThemeProvider';
-import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2, LogOut, LogIn } from 'lucide-react';
+import { Sun, Moon, Zap, FileText, Sparkles, Monitor, Menu, X, Code2} from 'lucide-react';
 // import { signOut, useSession, signIn } from "next-auth/react"
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Projects' },
@@ -39,8 +39,8 @@ export default function Nav() {
   const [themeOpen, setThemeOpen] = useState(false);
   const current = themes.find(t => t.value === theme) ?? themes[0];
   // const { data: session } = useSession()
-  const [open, setOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
+  // const [open, setOpen] = useState(false)
+  // const menuRef = useRef<HTMLDivElement>(null)
 
   return (
     <header style={{
